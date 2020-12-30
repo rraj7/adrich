@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exploring Chart.js</title>
+</head>
+<style>
+    .container {
+        width: 30%;
+        height: 20%;
+    }
+    
+    .chart-container {
+        width: 650px;
+        height: 450px
+    }
+</style>
+
+<body>
+    <h1>The Chart for avg temparatures in Farenheight in Chicago,IL</h1>
+    <div class="chart-container">
+        <canvas id="myChart" width="100" height="100"></canvas>
+    </div>
+
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="/Q2/app.js"></script>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', "Oct", "Nov", 'Dec'],
+            datasets: [{
+                data: [20, 25, 37, 51, 58, 65, 72, 77, 75, 66, 53, 43],
+                label: "Temp in F",
+                fill: false
+
+            }]
+        },
+        options: {
+            responsive: true,
+            hover: {
+                mode: 'nearest',
+                intersect: false
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Temperature'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>>
+
+</html>
